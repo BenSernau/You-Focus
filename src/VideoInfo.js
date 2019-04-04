@@ -3,7 +3,7 @@ import React from "react";
 var moment = require("moment");
 var momentDurationFormatSetup = require("moment-duration-format");
 momentDurationFormatSetup(moment);
-const API = 'AIzaSyAXsLV9v80KjKobrGYLc1fCmLBkN2tE0CM';
+const API = 'USE YOUR OWN KEY';
 
 class VideoInfo extends React.Component {
 	constructor(props) {
