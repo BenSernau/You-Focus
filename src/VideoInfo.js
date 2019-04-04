@@ -3,7 +3,7 @@ import React from "react";
 var moment = require("moment");
 var momentDurationFormatSetup = require("moment-duration-format");
 momentDurationFormatSetup(moment);
-const API = 'USE YOUR OWN KEY';
+const APIKey = 'USE YOUR OWN KEY';
 
 class VideoInfo extends React.Component {
 	constructor(props) {
@@ -35,7 +35,7 @@ class VideoInfo extends React.Component {
 	}
 
 	componentWillMount() {
-		var finalURL = `https://www.googleapis.com/youtube/v3/videos?id=${this.state.vidId}&key=${API}&part=contentDetails`
+		var finalURL = `https://www.googleapis.com/youtube/v3/videos?id=${this.state.vidId}&key=${APIKey}&part=contentDetails`
 		fetch(finalURL)
 			.then(response => response.json())
 			.then(response => {
