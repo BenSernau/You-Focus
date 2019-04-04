@@ -1,0 +1,141 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -1px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.searchButton {
+	display: inline-block;
+	height: 28px;
+	width: 50px;
+	margin: 0px;
+	vertical-align: middle;
+}
+
+form {
+	left:0;
+	right:0;
+	position: absolute;
+	margin: auto;
+	width: 38%;
+	vertical-align: middle;
+}
+
+header {
+	display: block;
+	position: relative;
+	top:3px;
+}
+
+.youFocusLogo {
+	display: inline-block;
+	font-size: 18px;
+	margin: 0px;
+	vertical-align: middle;
+}
+
+iframe {
+	src: "https://www.youtube.com/embed/PqFFQB64JS8";
+	left: 0;
+	right: 0;
+	top: 50px;
+	width: 74%;
+	min-width: 368px;
+	min-height: 207px;
+	height: calc(9 * (74vw / 16));
+	position: absolute;
+	margin: auto;
+	vertical-align: middle;
+}
+
+.chanTitle {
+	font-size: 16px;
+	margin: 5px;
+	top: 22px;
+}
+
+.logoImg {
+	height: 22px;
+	margin: 3px;
+	vertical-align: middle;
+	width: 32px;
+}
+
+.searchBar {
+	display: inline-block;
+	font-size: 16px;
+	height: 22px;
+	text-indent: 3px;
+	vertical-align: middle;
+	width: calc(100% - 54px);
+}
+
+.logo {
+	vertical-align: middle;
+	position: absolute;
+	left: 0;
+}
+
+.tNailImg {
+	vertical-align: middle;
+	display: inline-block;
+}
+
+.vidDetails {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	left: 120px;
+	width: calc(100% - 120px);
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.vidInfContainer {
+	border-style: solid;
+	background-color: red;
+	height: 90px;
+	margin: 10px 0px;
+	min-width: 500px;
+	position: relative;
+}
+
+.vidInfContainer:hover {
+	background-color: pink;
+	cursor: pointer;
+}
+
+.searchResults {
+	max-width: 700px;
+	min-width: 500px;
+	left:0;
+	right:0;
+	position: absolute;
+	width: 60%;
+	margin: auto;
+	top: 36px;
+}
+
+.vidTitle {
+	font-size: 17px;
+	margin: 5px;
+	top: 0;
+}
+
+.youTubeLink {
+	position: absolute;
+	top: 3px;
+	right: 3px;
+}
