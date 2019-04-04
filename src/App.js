@@ -2,7 +2,7 @@ import React from "react";
 import VideoInfo from "./VideoInfo";
 import youtube_social_icon_red from "./youtube_social_icon_red.png";
 
-const API = 'USE YOUR OWN KEY';
+const APIKey = 'USE YOUR OWN KEY';
 
 class App extends React.Component {
 	constructor() {
@@ -45,7 +45,7 @@ class App extends React.Component {
 	handleClick(event) {
 		this.setState({vidToDisplay: ""});
 		event.preventDefault();
-		const finalURL = `https://www.googleapis.com/youtube/v3/search?key=${API}&q=${this.state.query}&order=relevance&type=video&part=snippet&maxResults=50`
+		const finalURL = `https://www.googleapis.com/youtube/v3/search?key=${APIKey}&q=${this.state.query}&order=relevance&type=video&part=snippet&maxResults=50`
 		fetch(finalURL)
 			.then(response => response.json())
 			.then(response => {
