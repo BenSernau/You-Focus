@@ -51,7 +51,7 @@ class VideoInfo extends React.Component {
 
 	content() {
 		return(
-			<div className = "vidInfContainer" onMouseOver="hand">
+			<div className = "vidInfContainer">
 				<img className = "tNailImg" src = {this.state.thumbnailImg} alt = "error"/>
 				<div className = "vidDetails">
 					<h1 className = "vidTitle">{this.state.title}</h1>
