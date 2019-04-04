@@ -1,14 +1,8 @@
-//AIzaSyDcTKyHqq5v4gCE4YsMCCdj0NPfaRpVT7g
-//AIzaSyBm41bxQIxxEAfNDebgQHG6Q0ZikiZtDTU
-//AIzaSyAXsLV9v80KjKobrGYLc1fCmLBkN2tE0CM
-
-//I suppose I can't make you use your own keys.  You can switch one if Google complains about you making too many requests.  They're not restricted or anything.  Knock yourself out.
-
 import React from "react";
 import VideoInfo from "./VideoInfo";
 import youtube_social_icon_red from "./youtube_social_icon_red.png";
 
-const API = 'AIzaSyAXsLV9v80KjKobrGYLc1fCmLBkN2tE0CM';
+const API = 'USE YOUR OWN KEY';
 
 class App extends React.Component {
 	constructor() {
