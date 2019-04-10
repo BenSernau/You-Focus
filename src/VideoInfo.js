@@ -3,7 +3,7 @@ import React from "react";
 var moment = require("moment");
 var momentDurationFormatSetup = require("moment-duration-format");
 momentDurationFormatSetup(moment);
-const APIKey = 'USE YOUR OWN KEY';
+const APIKey = 'YOUR KEY HERE';
 
 class VideoInfo extends React.Component {
 	constructor(props) {
@@ -13,8 +13,7 @@ class VideoInfo extends React.Component {
 			duration: "",
 			thumbnailImg: props.thumbnailImg,
 			title: props.title,
-			vidId: props.vidId,
-			viewable: false
+			vidId: props.vidId
 		}
 
 		this.displayDuration = this.displayDuration.bind(this);
@@ -23,15 +22,18 @@ class VideoInfo extends React.Component {
 	}
 
 	componentWillReceiveProps(props) {
-		this.setState({
-			channel: props.channel,
-			duration: "",
-			thumbnailImg: props.thumbnailImg,
-			title: props.title,
-			vidId: props.vidId
-		})
-
-		this.componentWillMount();
+		var finalURL = `https://www.googleapis.com/youtube/v3/videos?id=${props.vidId}&key=${APIKey}&part=contentDetails`
+		fetch(finalURL)
+			.then(response => response.json())
+			.then(response => {
+				this.setState({
+					duration: this.displayDuration(response.items[0].contentDetails.duration),
+					channel: props.channel,
+					thumbnailImg: props.thumbnailImg,
+					title: props.title,
+					vidId: props.vidId
+				})
+			})
 	}
 
 	componentWillMount() {
@@ -43,10 +45,6 @@ class VideoInfo extends React.Component {
 					duration: this.displayDuration(response.items[0].contentDetails.duration)
 				})
 			})
-	}
-
-	componentDidMount() {
-		this.setState({viewable: true});
 	}
 
 	content() {
@@ -73,7 +71,7 @@ class VideoInfo extends React.Component {
 	render() {
 		return (
 			<div onClick = {this.handleClick}>
-				{this.state.viewable ? this.content() : <div>loading...</div>}
+				{this.content()}
 			</div>
 		)
 	}

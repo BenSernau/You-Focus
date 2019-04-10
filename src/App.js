@@ -2,7 +2,7 @@ import React from "react";
 import VideoInfo from "./VideoInfo";
 import youtube_social_icon_red from "./youtube_social_icon_red.png";
 
-const APIKey = 'USE YOUR OWN KEY';
+const APIKey = 'YOUR KEY HERE';
 
 class App extends React.Component {
 	constructor() {
@@ -11,6 +11,7 @@ class App extends React.Component {
 			resultYt: [],
 			query: "",
 			selectionsLoaded: false,
+			shouldSubmit: false,
 			vidToDisplay: ""
 		}
 
@@ -29,39 +30,74 @@ class App extends React.Component {
 						YouFocus
 					</h1>
 				</div>
-				<form onSubmit = {this.handleClick}>
-					<input className = "searchBar" placeholder = "Search..." type = "text" value = {this.state.query} onChange = {this.handleChange}/>
-					<button type = "button" onClick = {this.handleClick} className = "searchButton"><span role = "img" aria-label = "Search">&#x1F50E;</span></button>
+				<form onSubmit = {this.state.shouldSubmit ? this.handleClick : e => e.preventDefault()}>
+					<input 
+						className = "searchBar" 
+						placeholder = "Search..." 
+						type = "text" 
+						value = {this.state.query} 
+						onChange = {this.handleChange}
+					/>
+					<button 
+						type = "button" 
+						onClick = {this.state.shouldSubmit ? this.handleClick : null} 
+						className = "searchButton"
+					>
+						<span role = "img" aria-label = "Search">
+							&#x1F50E;
+						</span>
+					</button>
 				</form>
-				<a className = "youTubeLink" href = "https://youtube.com"><h1 className = "youFocusLogo">YouTube</h1></a>
+				<a className = "youTubeLink" href = "https://youtube.com">
+					<h1 className = "youFocusLogo">
+						Regular YouTube
+					</h1>
+				</a>
 			</header>
 		);
 	}
 
 	handleChange(event) {
-		this.setState({query: event.target.value})
+		this.setState({
+			query: event.target.value,
+			shouldSubmit: true
+		});
 	}
 
 	handleClick(event) {
 		this.setState({vidToDisplay: ""});
 		event.preventDefault();
-		const finalURL = `https://www.googleapis.com/youtube/v3/search?key=${APIKey}&q=${this.state.query}&order=relevance&type=video&part=snippet&maxResults=50`
+		const finalURL = `https://www.googleapis.com/youtube/v3/search?key=${APIKey}&q=${this.state.query}&order=relevance&type=video&part=snippet&maxResults=50`;
 		fetch(finalURL)
 			.then(response => response.json())
 			.then(response => {
-				const resultYt = response.items.map((obj, i) => <VideoInfo key = {i} channel = {obj.snippet.channelTitle} thumbnailImg = {obj.snippet.thumbnails.default.url} title = {obj.snippet.title.replace(/&#39;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, "\"")} vidId = {obj.id.videoId} vidDisplay = {this.handleVid}/>);
+				const resultYt = response.items.map((obj, i) => 
+					<VideoInfo 
+						key = {i} 
+						channel = {obj.snippet.channelTitle} 
+						thumbnailImg = {obj.snippet.thumbnails.default.url} 
+						title = {obj.snippet.title.replace(/&#39;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, "\"")} 
+						vidId = {obj.id.videoId} 
+						vidDisplay = {this.handleVid}
+					/>
+				);
 				this.setState({
 					resultYt: resultYt
-				})
+				});
 			})
-			.then(this.setState({selectionsLoaded: true}))
+			.then(this.setState({
+				selectionsLoaded: true,
+				shouldSubmit: false
+			})
+		)
 	}
 
 	handleVid(vid) {
 		this.setState({
 			vidToDisplay: vid,
-			selectionsLoaded: false
-		})
+			selectionsLoaded: false,
+			shouldSubmit: true
+		});
 	}
 
 	render() {
