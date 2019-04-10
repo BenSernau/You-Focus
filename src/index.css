@@ -86,10 +86,6 @@ iframe {
 	opacity: 0.5;
 }
 
-.searchBar::selection {
-	background-color: red;
-}
-
 .searchButton {
 	border-color: red;
 	background-color: black;

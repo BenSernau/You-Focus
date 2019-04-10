@@ -21,19 +21,22 @@ class VideoInfo extends React.Component {
 		this.handleClick = this.handleClick.bind(this);
 	}
 
-	componentWillReceiveProps(props) {
-		var finalURL = `https://www.googleapis.com/youtube/v3/videos?id=${props.vidId}&key=${APIKey}&part=contentDetails`
-		fetch(finalURL)
-			.then(response => response.json())
-			.then(response => {
-				this.setState({
-					duration: this.displayDuration(response.items[0].contentDetails.duration),
-					channel: props.channel,
-					thumbnailImg: props.thumbnailImg,
-					title: props.title,
-					vidId: props.vidId
+	componentDidUpdate(prevProps) {
+		if (prevProps !== this.props)
+		{
+			var finalURL = `https://www.googleapis.com/youtube/v3/videos?id=${this.props.vidId}&key=${APIKey}&part=contentDetails`
+			fetch(finalURL)
+				.then(response => response.json())
+				.then(response => {
+					this.setState({
+						duration: this.displayDuration(response.items[0].contentDetails.duration),
+						channel: this.props.channel,
+						thumbnailImg: this.props.thumbnailImg,
+						title: this.props.title,
+						vidId: this.props.vidId
+					})
 				})
-			})
+		}
 	}
 
 	componentWillMount() {
