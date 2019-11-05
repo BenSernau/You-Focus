@@ -50,7 +50,7 @@ class App extends React.Component {
 				</form>
 				<a className = "youTubeLink" href = "https://youtube.com">
 					<h1 className = "youFocusLogo">
-						Regular YouTube
+						YouTube
 					</h1>
 				</a>
 			</header>
@@ -75,7 +75,7 @@ class App extends React.Component {
 					<VideoInfo 
 						key = {i} 
 						channel = {obj.snippet.channelTitle} 
-						thumbnailImg = {obj.snippet.thumbnails.default.url} 
+						thumbnailImg = {obj.snippet.thumbnails.medium.url} 
 						title = {obj.snippet.title.replace(/&#39;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, "\"")} 
 						vidId = {obj.id.videoId} 
 						vidDisplay = {this.handleVid}
@@ -113,14 +113,32 @@ class App extends React.Component {
 		}
 
 		else if (this.state.vidToDisplay === "") {
-			return (
-				<div>
-					{this.createHeader()}
-					<div className = "searchResults">
-						{this.state.selectionsLoaded ? this.state.resultYt : null}
+
+			if (this.state.resultYt.length === 0) {
+				return (
+					<div>
+						{this.createHeader()}
+						<div className = "searchResults">
+							{this.state.selectionsLoaded ? this.state.resultYt : null}
+						</div>
 					</div>
-				</div>
-			);
+				);				
+			}
+
+			else {
+				return (
+					<div>
+						{this.createHeader()}
+						<div className = "searchResults">
+							{this.state.selectionsLoaded ? this.state.resultYt : null}
+							<div className = "endResults">
+								End of results. Refine your search!
+							</div>
+						</div>
+					</div>
+				);	
+			}
+
 		}
 		
 		else {
