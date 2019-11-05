@@ -9,7 +9,7 @@ body {
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	letter-spacing: -1px;
+	letter-spacing: 1px;
 }
 
 code {
@@ -22,7 +22,7 @@ form {
 	right:0;
 	position: absolute;
 	margin: auto;
-	width: 38%;
+	width: 44%;
 	vertical-align: middle;
 }
 
@@ -47,9 +47,13 @@ iframe {
 }
 
 .chanTitle {
-	font-size: 16px;
+	font-size: 14px;
 	margin: 5px;
 	top: 22px;
+}
+
+.endResults {
+	margin: 10px;
 }
 
 .logo {
@@ -101,8 +105,8 @@ iframe {
 }
 
 .searchResults {
-	max-width: 700px;
-	min-width: 500px;
+	max-width: 800px;
+	min-width: 640px;
 	left:0;
 	right:0;
 	position: absolute;
@@ -121,8 +125,8 @@ iframe {
 	top: 0;
 	bottom: 0;
 	margin: auto;
-	left: 120px;
-	width: calc(100% - 120px);
+	left: 320px;
+	width: calc(100% - 320px);
 	display: inline-block;
 	vertical-align: middle;
 }
@@ -131,7 +135,7 @@ iframe {
 	border-color: red;
 	border-style: solid;
 	background-color: black;
-	height: 90px;
+	height: 180px;
 	margin: 10px 0px;
 	min-width: 500px;
 	position: relative;
